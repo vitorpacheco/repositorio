@@ -1,0 +1,166 @@
+archetype (adl_version=2.0.5; rm_release=1.0.2; generated)
+	openEHR-EHR-CLUSTER.infusion_details.v1.0.0
+
+language
+	original_language = <[ISO_639-1::en]>
+	translations = <
+		["sl"] = <
+			language = <[ISO_639-1::sl]>
+			author = <
+				["name"] = <"*****">
+			>
+		>
+	>
+
+description
+	lifecycle_state = <"unmanaged">
+	original_author = <
+		["name"] = <"Ian McNicoll">
+		["organisation"] = <"Ocean Informatics, UK">
+		["email"] = <"ian.mcnicoll@oceaninformatics.com">
+		["date"] = <"2012-11-13">
+	>
+	copyright = <"">
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record details of a medication administered by infusion, including intravenous, subcutaneous or other routes.">
+			use = <"Use to describe the intended infusion administration within an INSTRUCTION.medication archetype or equivalent, or to describe the actual infsion administration within an ACTION.medication archetype, or equivalent">
+			keywords = <"infusion", "intravenous", "subcutaneous">
+			misuse = <"">
+		>
+		["sl"] = <
+			language = <[ISO_639-1::sl]>
+			purpose = <"*To record details of a medication administered by infusion, including intravenous, subcutaneous or other routes.(en)">
+			use = <"*Use to describe the intended infusion administration within an INSTRUCTION.medication archetype or equivalent, or to describe the actual infsion administration within an ACTION.medication archetype, or equivalent(en)">
+			keywords = <"*infusion(en)", "*intravenous(en)", "*subcutaneous(en)">
+			misuse = <"*(en)">
+		>
+	>
+	other_contributors = <"Sam Heard, Ocean Informatics, Australia", ...>
+	other_details = <
+		["MD5-CAM-1.0.1"] = <"174186FE770CA06D01DAF9596E410983">
+	>
+
+definition
+	CLUSTER[id1] matches {	-- Infusion Administration Details
+		items matches {
+			ELEMENT[id7] occurrences matches {0..1} 	-- Dose Administration Formula
+			ELEMENT[id2] occurrences matches {0..1} matches {	-- Dose Administration Rate
+				value matches {
+					DV_QUANTITY[id9] matches {
+						property matches {[at11]}
+						[magnitude, units] matches {
+							[{|>=0.0|}, {"l/h"}],
+							[{|>=0.0|}, {"ml/min"}],
+							[{|>=0.0|}, {"ml/s"}],
+							[{|>=0.0|}, {"ml/h"}]
+						}
+					}
+					DV_TEXT[id10] 
+				}
+			}
+			ELEMENT[id8] occurrences matches {0..1} matches {	-- Purpose
+				value matches {
+					DV_CODED_TEXT[id11] matches {
+						defining_code matches {[ac1]}		-- Purpose (synthesised)
+					}
+				}
+			}
+			allow_archetype CLUSTER[id6] matches {	-- Infusion device
+				include
+					archetype_id/value matches {/openEHR-EHR-CLUSTER\.device(-a-zA-Z0-9_]+)*\.v1/}
+			}
+		}
+	}
+
+terminology
+	term_definitions = <
+		["en"] = <
+			["id1"] = <
+				text = <"Infusion Administration Details">
+				description = <"Details of a medication administered by infusion.">
+			>
+			["id2"] = <
+				text = <"Dose Administration Rate">
+				description = <"The rate at which the infusion is to be administered. Use the Text choice to record non or semi-quantifiable instructions e.g. 1 drop per minute.">
+			>
+			["id6"] = <
+				text = <"Infusion device">
+				description = <"Details of the infusion device.">
+			>
+			["id7"] = <
+				text = <"Dose Administration Formula">
+				description = <"The formula used to calculate the Dose Administration rate where this is dependent on some other factor such as patient weight e.g. 10mg/kg/day.">
+			>
+			["id8"] = <
+				text = <"Purpose">
+				description = <"The purpose of the infusion.">
+			>
+			["at9"] = <
+				text = <"Baseline electrolyte infusion">
+				description = <"The infusion provides baseline hydration.">
+			>
+			["at10"] = <
+				text = <"Active medication infusion">
+				description = <"The infusion carries an active pharrmaceutical ingredient.">
+			>
+			["at11"] = <
+				text = <"Flow rate, volume">
+				description = <"Flow rate, volume">
+			>
+			["ac1"] = <
+				text = <"Purpose (synthesised)">
+				description = <"The purpose of the infusion. (synthesised)">
+			>
+		>
+		["sl"] = <
+			["id1"] = <
+				text = <"*Infusion Administration Details(en)">
+				description = <"*Details of a medication administered by infusion.(en)">
+			>
+			["id2"] = <
+				text = <"*Dose Administration Rate(en)">
+				description = <"*The rate at which the infusion is to be administered. Use the Text choice to record non or semi-quantifiable instructions e.g. 1 drop per minute.(en)">
+			>
+			["id6"] = <
+				text = <"*Infusion device(en)">
+				description = <"*Details of the infusion device.(en)">
+			>
+			["id7"] = <
+				text = <"*Dose Administration Formula(en)">
+				description = <"*The formula used to calculate the Dose Administration rate where this is dependent on some other factor such as patient weight e.g. 10mg/kg/day.(en)">
+			>
+			["id8"] = <
+				text = <"*Purpose(en)">
+				description = <"*The purpose of the infusion.(en)">
+			>
+			["at9"] = <
+				text = <"*Baseline electrolyte infusion(en)">
+				description = <"*The infusion provides baseline hydration.(en)">
+			>
+			["at10"] = <
+				text = <"*Active medication infusion(en)">
+				description = <"*The infusion carries an active pharrmaceutical ingredient.(en)">
+			>
+			["at11"] = <
+				text = <"*Flow rate, volume (en)">
+				description = <"*Flow rate, volume (en)">
+			>
+			["ac1"] = <
+				text = <"*Purpose(en) (synthesised)">
+				description = <"*The purpose of the infusion.(en) (synthesised)">
+			>
+		>
+	>
+	term_bindings = <
+		["openehr"] = <
+			["at11"] = <http://openehr.org/id/126>
+		>
+	>
+	value_sets = <
+		["ac1"] = <
+			id = <"ac1">
+			members = <"at9", "at10">
+		>
+	>

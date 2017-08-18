@@ -1,0 +1,91 @@
+archetype (adl_version=2.0.5; rm_release=1.0.2; generated)
+	openEHR-EHR-EVALUATION.clinical_report.v1.0.0
+
+language
+	original_language = <[ISO_639-1::en]>
+	translations = <
+		["sl"] = <
+			language = <[ISO_639-1::sl]>
+			author = <
+				["name"] = <"?">
+			>
+		>
+	>
+
+description
+	lifecycle_state = <"unmanaged">
+	original_author = <
+		["name"] = <"">
+	>
+	copyright = <"">
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"">
+			use = <"">
+			misuse = <"">
+		>
+		["sl"] = <
+			language = <[ISO_639-1::sl]>
+			purpose = <"*(en)">
+			use = <"*(en)">
+			misuse = <"*(en)">
+		>
+	>
+	other_details = <
+		["MD5-CAM-1.0.1"] = <"ECDBB8B62EBE9A6E609E7F562DCBC638">
+	>
+
+definition
+	EVALUATION[id1] matches {	-- Clinical report
+		data matches {
+			ITEM_TREE[id2] matches {
+				items matches {
+					ELEMENT[id3] occurrences matches {0..1} matches {	-- Contents
+						value matches {
+							DV_PARSABLE[id5] matches {
+								formalism matches {"text/html", "text/plain", "text/rtf", "text/xml"}
+							}
+						}
+					}
+					ELEMENT[id4] occurrences matches {0..1} matches {	-- Type
+						value matches {
+							DV_TEXT[id6] 
+						}
+					}
+				}
+			}
+		}
+	}
+
+terminology
+	term_definitions = <
+		["en"] = <
+			["id1"] = <
+				text = <"Clinical report">
+				description = <"Free text, formatted clinical report">
+			>
+			["id3"] = <
+				text = <"Contents">
+				description = <"*">
+			>
+			["id4"] = <
+				text = <"Type">
+				description = <"*">
+			>
+		>
+		["sl"] = <
+			["id1"] = <
+				text = <"*Clinical report(en)">
+				description = <"*Free text, formatted clinical report(en)">
+			>
+			["id3"] = <
+				text = <"Vsebina">
+				description = <"**(en)">
+			>
+			["id4"] = <
+				text = <"Tip">
+				description = <"**(en)">
+			>
+		>
+	>

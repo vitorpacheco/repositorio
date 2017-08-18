@@ -1,0 +1,434 @@
+archetype (adl_version=2.0.5; rm_release=1.0.2; generated)
+	openEHR-EHR-EVALUATION.problem_diagnosis.v1.0.0
+
+language
+	original_language = <[ISO_639-1::en]>
+	translations = <
+		["sl"] = <
+			language = <[ISO_639-1::sl]>
+			author = <
+				["organisation"] = <"Marand d.o.o., Ljubljana, Slovenija">
+				["name"] = <"mag. Biljana Prinčič">
+				["email"] = <"biljana.princic@marand.si">
+			>
+		>
+	>
+
+description
+	lifecycle_state = <"unmanaged">
+	original_author = <
+		["name"] = <"Sam Heard">
+		["organisation"] = <"Ocean Informatics">
+		["email"] = <"sam.heard@oceaninformatics.com">
+		["date"] = <"23/04/2006">
+	>
+	copyright = <"copyright (c) 2010 NEHTA">
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record details about a problem or diagnosis by a clinician.">
+			use = <"Use to record detailed information about problems or diagnoses recognised by a clinician. There are many uses including: recording a diagnosis during an encounter; populating a Problem List or a Summary statement, such as a Discharge Summary.
+
+Use to record all problems or diagnoses, including those with context-specific qualifiers such as past/present, primary/secondary, active/inactive etc. These qualifiers can be archetyped separately and included in the ‘Status’ slot, because their use varies in different settings.">
+			keywords = <"issue", "condition", "problem", "concern", "diagnosis", "criteria", "illness">
+			misuse = <"Not to be used for recording the 'Reason for Encounter' or 'Presenting Complaint' - which is information captured early in the encounter, usually prior to full assessment and will be represented using a separate EVALUATION archetype.
+Not to be used for recording Differential Diagnoses - use the EVALUATION.differential diagnosis archetype.">
+		>
+		["sl"] = <
+			language = <[ISO_639-1::sl]>
+			purpose = <"Za dokumentiranje negovalnih problem in diagnoz v procesu zdravstvene nege">
+			use = <"Za dokumentiranje negovalnih problem in diagnoz v procesu zdravstvene nege. Lahko se uporabi na različnih področjih: za zapisovanje diagnoz v enem encaunter-u, za razširitev sznama negovalnih problemov in zaključkov opazovanj pacienta, kot npr. pri odpustnem negovalnem dokumentu.
+
+">
+			keywords = <"problem", "nega", "negovalna diagnoza", "skrb", "">
+			misuse = <"Se ne uporablja za zapisovanje  'Reason for Encounter' or 'Presenting Complaint', ki omogočajo zbiranje informacij bolj zgodaj v encauntr-u, za katere se ponavadi uporablja EVALUATION archetype.
+Se ne uporablja za dokumentiranje različnosti diagnoz; za to se uporablja EVALUATION.differential diagnosis archetype.">
+		>
+	>
+	other_contributors = <"Koray Atalag, University of Auckland, New Zealand", "John Bennett, NEHTA, Australia", "Steve Bentley, NHS CfH, United Kingdom", "Ian Bull, ACT Health, Australia", "Sergio Carmona, Chile", "Rong Chen, Cambio Healthcare Systems, Sweden", "Stephen Chu, NEHTA, Australia (Editor)", "Ed Conley, Cardiff University, United Kingdom", "Matthew Cordell, NEHTA, Australia", "Paul Donaldson, Nursing Informatics Australia, Australia", "David Evans, Queensland Health, Australia", "Peter Garcia-Webb, Australia", "Anneke Goossen, Results4Care, Netherlands", "Heather Grain, Llewelyn Grain Consulting, Australia", "Evelyn Hovenga, EJSH Consulting, Australia", "Eugene Igras, IRIS Systems Inc, Canada", "Mary Kelaher, NEHTA, Australia", "Eizen Kimura, Ehime University, Japan", "Shinji Kobayashi, Ehime University, Japan", "Robert L'egan, NEHTA, Australia", "Heather Leslie, Ocean Informatics, Australia (Editor)", "Hugh Leslie, Ocean Informatics, Australia (Editor)", "Rohan Martin, Ambulance Victoria, Australia", "David McKillop, NEHTA, Australia", "Ian McNicoll, Ocean Informatics UK, United Kingdom", "Chris Mitchell, RACGP, Australia", "Stewart Morrison, NEHTA, Australia", "Jörg Niggeman, Compugroup, Germany", "Andrej Orel, Marand d.o.o., Slovenia", "Camilla Preeston, Royal Australian College of General Practitioners, Australia", "Cathy Richardson, NEHTA, Australia", "Kylie Young, The Royal Australian College of General Practitioners, Australia">
+	other_details = <
+		["references"] = <"NEHTA Clinical data groups - Problem/Diagnosis V2.0 http://www.nehta.gov.au/data-group-library/data-specifications/dgl-problem-diagnosis.
+Australian Standard AS 4700.6-2006 Implementation of Health Level Seven version 2.4 - Part 6: Referral, discharge and health record messaging.
+CEN/TC 251/WGII  prEN 13940-2:2009.3- Health informatics – System of concepts to support Continuity of care – Part 2: Health care process and workflow.
+BS_EN_13940-1_2007 - British Standard.  Health informatics - System of concepts to support continuity of care - Part 1: Basic concepts.
+Swedish National Process model.
+IHE Technical Framework Supplement – Patient Plan of Care (PPOC).
+Royal Australian College of General Practitioners - Fact Sheet: Medical History
+Mosby's Pocket Dictionary of Medicine, Nursing and Health Professional, 6th Edition, Mosby Elsevier, 2010">
+		["MD5-CAM-1.0.1"] = <"783E55BA7AB86937E023275B8E1C6D74">
+	>
+
+definition
+	EVALUATION[id1] matches {	-- Problem/Diagnosis
+		data matches {
+			ITEM_TREE[id2] matches {
+				items cardinality matches {1..*; unordered} matches {
+					ELEMENT[id3] occurrences matches {0..1} matches {	-- Problem/Diagnosis
+						value matches {
+							DV_TEXT[id78] 
+						}
+					}
+					ELEMENT[id10] occurrences matches {0..1} matches {	-- Clinical description
+						value matches {
+							DV_TEXT[id79] 
+						}
+					}
+					ELEMENT[id11] occurrences matches {0..1} matches {	-- Date of onset
+						value matches {
+							DV_DATE_TIME[id80] 
+						}
+					}
+					ELEMENT[id38] occurrences matches {0..1} matches {	-- Age of onset
+						value matches {
+							DV_DURATION[id81] 
+						}
+					}
+					allow_archetype CLUSTER[id45] matches {	-- Anatomical location
+						include
+							archetype_id/value matches {/openEHR-EHR-CLUSTER\.anatomical_location(-a-zA-Z0-9_]+)*\.v1/}
+					}
+					CLUSTER[id19] occurrences matches {0..1} matches {	-- Occurrence Summary
+						items matches {
+							ELEMENT[id26] occurrences matches {0..1} matches {	-- Number
+								value matches {
+									DV_COUNT[id82] matches {
+										magnitude matches {|>=1|}
+									}
+								}
+							}
+							ELEMENT[id20] occurrences matches {0..1} matches {	-- Frequency
+								value matches {
+									DV_QUANTITY[id83] matches {
+										property matches {[at80]}
+										units matches {"/d", "/yr", "/h", "/wk", "/mo", "/min"}
+									}
+								}
+							}
+							ELEMENT[id21] occurrences matches {0..1} matches {	-- Last occurrence
+								value matches {
+									DV_DATE[id84] 
+								}
+							}
+							ELEMENT[id73] occurrences matches {0..1} matches {	-- Description
+								value matches {
+									DV_TEXT[id85] 
+								}
+							}
+							ELEMENT[id74] matches {	-- Link to previous occurrence
+								value matches {
+									DV_URI[id86] 
+								}
+							}
+						}
+					}
+					ELEMENT[id16] matches {	-- Causative Agent
+						value matches {
+							DV_TEXT[id87] 
+						}
+					}
+					CLUSTER[id27] matches {	-- Related items
+						items matches {
+							ELEMENT[id29] matches {	-- Related items
+								value matches {
+									DV_CODED_TEXT[id88] matches {
+										defining_code matches {[ac3]}		-- *New constraint(sl)
+									}
+								}
+							}
+							ELEMENT[id57] occurrences matches {0..1} matches {	-- Relationship type
+								value matches {
+									DV_CODED_TEXT[id89] matches {
+										defining_code matches {[ac4]}		-- Relationship type (synthesised)
+									}
+								}
+							}
+						}
+					}
+					ELEMENT[id31] occurrences matches {0..1} matches {	-- Date of resolution/remission
+						value matches {
+							DV_DATE_TIME[id90] 
+						}
+					}
+					ELEMENT[id32] occurrences matches {0..1} matches {	-- Age at ressolution/remission
+						value matches {
+							DV_DURATION[id91] 
+						}
+					}
+					allow_archetype CLUSTER[id55] matches {	-- Supporting Criteria
+						include
+							archetype_id/value matches {/.*/}
+					}
+					allow_archetype CLUSTER[id56] matches {	-- Clinical stage/Grade
+						include
+							archetype_id/value matches {/.*/}
+					}
+					ELEMENT[id70] occurrences matches {0..1} matches {	-- Comment
+						value matches {
+							DV_TEXT[id92] 
+						}
+					}
+				}
+			}
+		}
+		protocol matches {
+			ITEM_TREE[id75] matches {
+				items matches {
+					ELEMENT[id76] occurrences matches {0..1} matches {	-- Link to supporting medical documentation
+						value matches {
+							DV_URI[id93] 
+						}
+					}
+					allow_archetype CLUSTER[id77] matches {	-- Status
+						include
+							archetype_id/value matches {/.*/}
+					}
+				}
+			}
+		}
+	}
+
+terminology
+	term_definitions = <
+		["en"] = <
+			["id1"] = <
+				text = <"Problem/Diagnosis">
+				description = <"Any health care condition which may impact on to mental, physical health of patient">
+			>
+			["id3"] = <
+				text = <"Problem/Diagnosis">
+				description = <"Identification of the problem or diagnoses. Should be used a coded text.">
+			>
+			["id10"] = <
+				text = <"Clinical description">
+				description = <"Narrative description or comments about clinical aspects of the problem/diagnoses">
+			>
+			["id11"] = <
+				text = <"Date of onset">
+				description = <"Estimated date the problem/diagnoses began">
+			>
+			["id16"] = <
+				text = <"Causative Agent">
+				description = <"The phenomenon, substance, or organisem that is considered to be cause">
+			>
+			["id19"] = <
+				text = <"Occurrence Summary">
+				description = <"Summary information about occurrence or exacerbations.">
+			>
+			["id20"] = <
+				text = <"Frequency">
+				description = <"The frequency of occurrences or excerbation of the problem/diagnoses">
+			>
+			["id21"] = <
+				text = <"Last occurrence">
+				description = <"The date of last occurrance or exacerbation">
+			>
+			["id26"] = <
+				text = <"Number">
+				description = <"Cumulative number of occurrances or exacerbation">
+			>
+			["id27"] = <
+				text = <"Related items">
+				description = <"Further problems, diagnoses, procedures aotr events that related to th eproblem/diagnose">
+			>
+			["id29"] = <
+				text = <"Related items">
+				description = <"Further problems, diagnoses, procedures aotr events that related to th eproblem/diagnose">
+			>
+			["id31"] = <
+				text = <"Date of resolution/remission">
+				description = <"The date that problem/diagnose resolved or went to remission">
+			>
+			["id32"] = <
+				text = <"Age at ressolution/remission">
+				description = <"The age of person at the time of ressolution">
+			>
+			["id38"] = <
+				text = <"Age of onset">
+				description = <"The age of the person when clinician assess the problem/diagnose">
+			>
+			["id45"] = <
+				text = <"Anatomical location">
+				description = <"Slot to contain detailed and structured anatomical location details">
+			>
+			["id55"] = <
+				text = <"Supporting Criteria">
+				description = <"The supporting criteria on which problem/diagnose based">
+			>
+			["id56"] = <
+				text = <"Clinical stage/Grade">
+				description = <"Clinical stage or grade of problem">
+			>
+			["id57"] = <
+				text = <"Relationship type">
+				description = <"The type of relationship that this problem/diagnose has to the related itam">
+			>
+			["id70"] = <
+				text = <"Comment">
+				description = <"Any comment about problem/diagnose">
+			>
+			["id73"] = <
+				text = <"Description">
+				description = <"Description">
+			>
+			["id74"] = <
+				text = <"Link to previous occurrence">
+				description = <"Link to previous occurrence">
+			>
+			["id76"] = <
+				text = <"Link to supporting medical documentation">
+				description = <"Link to supporting mediacl documentation">
+			>
+			["id77"] = <
+				text = <"Status">
+				description = <"Slot to contain range of descriptors for context- or use-case specific labels or workflow-related aspects of the diagnostic process which may not be safe to exchange between systems or use in a shared environment. Examples include: active/inactive; primary/secondary; preliminary/provisional/working/final.">
+			>
+			["at78"] = <
+				text = <"Risk">
+				description = <"Risk">
+			>
+			["at79"] = <
+				text = <"Factor">
+				description = <"Factor">
+			>
+			["ac3"] = <
+				text = <"*New constraint(sl)">
+				description = <"**(sl)">
+			>
+			["at80"] = <
+				text = <"Frequency">
+				description = <"Frequency">
+			>
+			["ac4"] = <
+				text = <"Relationship type (synthesised)">
+				description = <"The type of relationship that this problem/diagnose has to the related itam (synthesised)">
+			>
+		>
+		["sl"] = <
+			["id1"] = <
+				text = <"Problem / Diagnoza">
+				description = <"Vsa stanja pacienta, ki vplivajo na njegovo zdravje">
+			>
+			["id3"] = <
+				text = <"Problem / Diagnoza">
+				description = <"Identificirani problem oz. diagnoza. Uporaba standardnih šifrantov je priporočljiva.">
+			>
+			["id10"] = <
+				text = <"Opis">
+				description = <"Opis kliničnih aspektov problema oz. diagnoze ">
+			>
+			["id11"] = <
+				text = <"Datum začetka">
+				description = <"Okvirni datum nastanka problema">
+			>
+			["id16"] = <
+				text = <"Vzrok">
+				description = <"Vzrok za nastanek problema">
+			>
+			["id19"] = <
+				text = <"Opis poslabšanja">
+				description = <"Podatki o ponovitvah oz, poslabšanjih">
+			>
+			["id20"] = <
+				text = <"Pogostost">
+				description = <"Pogostost poslabšanj">
+			>
+			["id21"] = <
+				text = <"Datum zadnjega">
+				description = <"Kdaj bilo zadnje poslabšanje?">
+			>
+			["id26"] = <
+				text = <"Številka">
+				description = <"Število ponovitev">
+			>
+			["id27"] = <
+				text = <"V povezavi ">
+				description = <"*Further problems, diagnoses, procedures aotr events that related to th eproblem/diagnose(en)">
+			>
+			["id29"] = <
+				text = <"V povezavi z">
+				description = <"*Further problems, diagnoses, procedures aotr events that related to th eproblem/diagnose(en)">
+			>
+			["id31"] = <
+				text = <"Ni več aktualna od">
+				description = <"Datum od katerega ta diagnoza ni več aktualna oz. problem ni več aktualen">
+			>
+			["id32"] = <
+				text = <"Starost pacienta ob razrešitvi problema">
+				description = <"Staros pacienta ob razrešitvi problema">
+			>
+			["id38"] = <
+				text = <"Starost pacienta ob nastanku problema">
+				description = <"Starost pacienta ob astanku problema">
+			>
+			["id45"] = <
+				text = <"Lokacija">
+				description = <"Anatomska lokacija">
+			>
+			["id55"] = <
+				text = <"Dodatni podatki">
+				description = <"Dodatni podatki k diagnozi">
+			>
+			["id56"] = <
+				text = <"Stopnja">
+				description = <"Stopnja problema">
+			>
+			["id57"] = <
+				text = <"*Relationship type(en)">
+				description = <"*The type of relationship that this problem/diagnose has to the related itam(en)">
+			>
+			["id70"] = <
+				text = <"Opombe">
+				description = <"Dodatne opombe">
+			>
+			["id73"] = <
+				text = <"Opis">
+				description = <"Opis problema">
+			>
+			["id74"] = <
+				text = <"Prejšnje ponovitve">
+				description = <"Povezava s prejšnjimi ponovitvami">
+			>
+			["id76"] = <
+				text = <"Medicinska dokumentacija">
+				description = <"Povezava z dodatno medicinsko dokumentacijo">
+			>
+			["id77"] = <
+				text = <"Status">
+				description = <"Status">
+			>
+			["at78"] = <
+				text = <"Tveganje">
+				description = <"Tveganje">
+			>
+			["at79"] = <
+				text = <"Dejavnik">
+				description = <"Dejavnik">
+			>
+			["ac3"] = <
+				text = <"New constraint">
+				description = <"*">
+			>
+			["at80"] = <
+				text = <"*Frequency (en)">
+				description = <"*Frequency (en)">
+			>
+			["ac4"] = <
+				text = <"*Relationship type(en) (synthesised)">
+				description = <"*The type of relationship that this problem/diagnose has to the related itam(en) (synthesised)">
+			>
+		>
+	>
+	term_bindings = <
+		["PK-Nanda"] = <
+			["ac3"] = <terminology:PK-Nanda>
+		>
+		["openehr"] = <
+			["at80"] = <http://openehr.org/id/382>
+		>
+	>
+	value_sets = <
+		["ac4"] = <
+			id = <"ac4">
+			members = <"at78", "at79">
+		>
+	>

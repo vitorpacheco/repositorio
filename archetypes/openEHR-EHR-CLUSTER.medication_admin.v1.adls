@@ -1,0 +1,213 @@
+archetype (adl_version=2.0.5; rm_release=1.0.2; generated)
+	openEHR-EHR-CLUSTER.medication_admin.v1.0.0
+
+language
+	original_language = <[ISO_639-1::en]>
+	translations = <
+		["sl"] = <
+			language = <[ISO_639-1::sl]>
+			author = <
+				["organisation"] = <"Marand, Ljubljana">
+				["name"] = <"Biljana Prinčič">
+				["email"] = <"biljana.princic@marand.si">
+			>
+		>
+	>
+
+description
+	lifecycle_state = <"unmanaged">
+	original_author = <
+		["name"] = <"Sam Heard">
+		["organisation"] = <"NEHTA">
+		["email"] = <"sam.heard@oceaninformatics.com">
+		["date"] = <"10/11/2010">
+	>
+	copyright = <"">
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To describe how a medication should be administered or was actually administered.">
+			use = <"To be used in INSTRUCTION.medication and ACTION.medication to describe the administration.">
+			keywords = <"medication administration", "injection">
+			misuse = <"Not to be used for administration of anything other than medication.">
+		>
+		["sl"] = <
+			language = <[ISO_639-1::sl]>
+			purpose = <"">
+			use = <"">
+			misuse = <"">
+		>
+	>
+	other_details = <
+		["MD5-CAM-1.0.1"] = <"26998F8362E0AA57A9FCAE456E20F812">
+	>
+
+definition
+	CLUSTER[id1] matches {	-- Medication administration
+		items matches {
+			ELEMENT[id2] matches {	-- Route
+				value matches {
+					DV_CODED_TEXT[id7] matches {
+						defining_code matches {[ac2]}		-- RouteOfAdministration
+					}
+				}
+			}
+			ELEMENT[id3] occurrences matches {0..1} matches {	-- Site
+				value matches {
+					DV_CODED_TEXT[id8] matches {
+						defining_code matches {[ac3]}		-- Site (synthesised)
+					}
+				}
+			}
+			ELEMENT[id4] occurrences matches {0..1} matches {	-- Delivery method
+				value matches {
+					DV_TEXT[id9] 
+				}
+			}
+			ELEMENT[id5] occurrences matches {0..1} matches {	-- Dose duration
+				value matches {
+					DV_DURATION[id10] matches {
+						value matches {|>=PT0S|}
+					}
+				}
+			}
+			allow_archetype CLUSTER[id6] matches {	-- Infusion details
+				include
+					archetype_id/value matches {/openEHR-EHR-CLUSTER\.infusion_details(-a-zA-Z0-9_]+)*\.v1/}
+			}
+		}
+	}
+
+terminology
+	term_definitions = <
+		["en"] = <
+			["id1"] = <
+				text = <"Medication administration">
+				description = <"Information about the future or actual administration of medication.">
+			>
+			["id2"] = <
+				text = <"Route">
+				description = <"The route by which the medication is administered (e.g. oral, sublingual etc).">
+			>
+			["id3"] = <
+				text = <"Site">
+				description = <"A description of the site of administration.">
+			>
+			["id4"] = <
+				text = <"Delivery method">
+				description = <"The method of delivery if this should be specified (e.g. via a nebuliser or spacer).">
+			>
+			["id5"] = <
+				text = <"Dose duration">
+				description = <"The length of time over which to administer each dose (e.g. an intravenous administration may have to be over a period of 5 minutes).">
+			>
+			["id6"] = <
+				text = <"Infusion details">
+				description = <"Details of administration via infusion">
+			>
+			["at7"] = <
+				text = <"Left upper arm">
+				description = <"Left upper arm">
+			>
+			["at8"] = <
+				text = <"Right upper arm">
+				description = <"Right upper arm">
+			>
+			["at9"] = <
+				text = <"Thigh left leg">
+				description = <"Thigh left leg">
+			>
+			["at10"] = <
+				text = <"Thigh right leg">
+				description = <"Thigh right leg">
+			>
+			["at11"] = <
+				text = <"Mouth">
+				description = <"Mouth">
+			>
+			["at12"] = <
+				text = <"Gluteus left">
+				description = <"Gluteus left">
+			>
+			["at13"] = <
+				text = <"Gluteus right">
+				description = <"Gluteus right">
+			>
+			["ac2"] = <
+				text = <"RouteOfAdministration">
+				description = <"A list of all possible routes of administration of medication.">
+			>
+			["ac3"] = <
+				text = <"Site (synthesised)">
+				description = <"A description of the site of administration. (synthesised)">
+			>
+		>
+		["sl"] = <
+			["id1"] = <
+				text = <"Aplikacija cepiva">
+				description = <"Podatki o aplikaciji cepiva">
+			>
+			["id2"] = <
+				text = <"Pot uporabe">
+				description = <"Poti uporabe zdravila">
+			>
+			["id3"] = <
+				text = <"Mesto aplikacije">
+				description = <"Mesto aplikacije">
+			>
+			["id4"] = <
+				text = <"Vrsta aplikacije">
+				description = <"Vrsta apliciranja, če je določena (npr. inhalacije, oralno...)">
+			>
+			["id5"] = <
+				text = <"Trajanje doze aplikacije">
+				description = <"Čas trajanja ene doze apliciranega zdravila">
+			>
+			["id6"] = <
+				text = <"Podatki o infuziji">
+				description = <"Podatki o infuziji">
+			>
+			["at7"] = <
+				text = <"Nadlaket leva roka">
+				description = <"Nadlaket leva roka">
+			>
+			["at8"] = <
+				text = <"Nadlaket desna roka">
+				description = <"Nadlaket desna roka">
+			>
+			["at9"] = <
+				text = <"Stegno leva noga">
+				description = <"Stegno leva noga">
+			>
+			["at10"] = <
+				text = <"Stegno desna noga">
+				description = <"Stegno desna noga">
+			>
+			["at11"] = <
+				text = <"Usta">
+				description = <"Usta">
+			>
+			["at12"] = <
+				text = <"Zadnjična mišica levo">
+				description = <"Zadnjična mišica levo">
+			>
+			["at13"] = <
+				text = <"Zadnjična mišica desno">
+				description = <"Zadnjična mišica desno">
+			>
+			["ac2"] = <
+				text = <"*RouteOfAdministration(en)">
+				description = <"*A list of all possible routes of administration of medication.(en)">
+			>
+			["ac3"] = <
+				text = <"Mesto aplikacije (synthesised)">
+				description = <"Mesto aplikacije (synthesised)">
+			>
+		>
+	>
+	value_sets = <
+		["ac3"] = <
+			id = <"ac3">
+			members = <"at7", "at8", "at9", "at10", "at11", "at12", "at13">
+		>
+	>

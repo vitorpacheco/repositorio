@@ -1,0 +1,81 @@
+archetype (adl_version=2.0.5; rm_release=1.0.2; generated)
+	openEHR-EHR-CLUSTER.context_detail.v1.0.0
+
+language
+	original_language = <[ISO_639-1::en]>
+	translations = <
+		["sl"] = <
+			language = <[ISO_639-1::sl]>
+			author = <
+				["organisation"] = <"Marand d.o.o., Ljubljana Slovenija">
+				["name"] = <"mag. Biljana Prinčič">
+				["email"] = <"biljana.princic@marand.si">
+			>
+		>
+	>
+
+description
+	lifecycle_state = <"unmanaged">
+	original_author = <
+		["name"] = <"Dr Ian McNicoll">
+		["organisation"] = <"Ocean Informatics, United Kingdom">
+		["email"] = <"ian.mcnicoll@oceaninformatics.com">
+		["date"] = <"01/12/2010">
+	>
+	copyright = <"">
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record common extended contextual details that apply to all COMPOSITION archetypes wthin a specific application or care setting">
+			use = <"">
+			keywords = <"composition", "context">
+			misuse = <"">
+		>
+		["sl"] = <
+			language = <[ISO_639-1::sl]>
+			purpose = <"Za zapisovanje podatkov, ki se nanašajo na vse COMPOSITION archetypes
+
+">
+			use = <"">
+			keywords = <"composition", "context", "vsebina">
+			misuse = <"">
+		>
+	>
+	other_details = <
+		["MD5-CAM-1.0.1"] = <"2AF1D13513ED24715942283C4B0B67A4">
+	>
+
+definition
+	CLUSTER[id1] matches {	-- Context detail
+		items matches {
+			ELEMENT[id9] occurrences matches {1..*} matches {	-- Tags
+				value matches {
+					DV_TEXT[id10] 
+				}
+			}
+		}
+	}
+
+terminology
+	term_definitions = <
+		["en"] = <
+			["id1"] = <
+				text = <"Context detail">
+				description = <"Additional contextual detail to be applied to all compositions.">
+			>
+			["id9"] = <
+				text = <"Tags">
+				description = <"*">
+			>
+		>
+		["sl"] = <
+			["id1"] = <
+				text = <"Podrobnosti">
+				description = <"Dodatni podatki o kontekstu">
+			>
+			["id9"] = <
+				text = <"Tagi">
+				description = <"*">
+			>
+		>
+	>

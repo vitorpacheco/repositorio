@@ -1,0 +1,237 @@
+archetype (adl_version=2.0.5; rm_release=1.0.2; generated)
+	openEHR-EHR-CLUSTER.composition_context_detail.v1.0.0
+
+language
+	original_language = <[ISO_639-1::en]>
+	translations = <
+		["sl"] = <
+			language = <[ISO_639-1::sl]>
+			author = <
+				["organisation"] = <"Marand d.o.o., Ljubljana Slovenija">
+				["name"] = <"mag. Biljana Prinčič">
+				["email"] = <"biljana.princic@marand.si">
+			>
+		>
+	>
+
+description
+	lifecycle_state = <"unmanaged">
+	original_author = <
+		["name"] = <"Dr Ian McNicoll">
+		["organisation"] = <"Ocean Informatics, United Kingdom">
+		["email"] = <"ian.mcnicoll@oceaninformatics.com">
+		["date"] = <"01/12/2010">
+	>
+	copyright = <"">
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record common extended contextual details that apply to all COMPOSITION archetypes wthin a specific application or care setting">
+			use = <"">
+			keywords = <"composition", "context">
+			misuse = <"">
+		>
+		["sl"] = <
+			language = <[ISO_639-1::sl]>
+			purpose = <"Za zapisovanje podatkov, ki se nanašajo na vse COMPOSITION archetypes">
+			use = <"">
+			keywords = <"composition", "context", "vsebina">
+			misuse = <"">
+		>
+	>
+	other_details = <
+		["MD5-CAM-1.0.1"] = <"590F84A2BD016A2EDF84493308A2DB69">
+	>
+
+definition
+	CLUSTER[id1] matches {	-- Context detail 
+		items matches {
+			ELEMENT[id2] occurrences matches {0..1} matches {	-- Period of care identifier
+				value matches {
+					DV_TEXT[id12] 
+				}
+			}
+			ELEMENT[id3] occurrences matches {0..1} matches {	-- Departmental period of care identifier
+				value matches {
+					DV_TEXT[id13] 
+				}
+			}
+			ELEMENT[id4] occurrences matches {0..1} matches {	-- Portlet Id
+				value matches {
+					DV_TEXT[id14] 
+				}
+			}
+			ELEMENT[id5] occurrences matches {0..1} matches {	-- Medication order type
+				value matches {
+					DV_CODED_TEXT[id15] matches {
+						defining_code matches {[ac1]}		-- Medication order type (synthesised)
+					}
+				}
+			}
+			ELEMENT[id9] matches {	-- Tags
+				value matches {
+					DV_TEXT[id16] 
+				}
+			}
+			ELEMENT[id11] occurrences matches {0..1} matches {	-- Document status
+				value matches {
+					DV_CODED_TEXT[id17] matches {
+						defining_code matches {[ac2]}		-- Document status (synthesised)
+					}
+				}
+			}
+			ELEMENT[id10] matches {	-- Attachment
+				value matches {
+					DV_MULTIMEDIA[id18] matches {
+						media_type 
+					}
+				}
+			}
+		}
+	}
+
+terminology
+	term_definitions = <
+		["en"] = <
+			["id1"] = <
+				text = <"Context detail ">
+				description = <"Additional contextual detail to be applied to all compositions.">
+			>
+			["id2"] = <
+				text = <"Period of care identifier">
+				description = <"The period of care to which this composition belongs. This equates to the CONTSYS concept and repesents an admisitrative or contractual spell of care, involving a specific instiution or care provider.">
+			>
+			["id3"] = <
+				text = <"Departmental period of care identifier">
+				description = <"The identifier of the departmental period of care to which this Composition belongs.">
+			>
+			["id4"] = <
+				text = <"Portlet Id">
+				description = <"Portlet ID from which stores the information where was the composition saved.">
+			>
+			["id5"] = <
+				text = <"Medication order type">
+				description = <"*">
+			>
+			["at6"] = <
+				text = <"Oral">
+				description = <"*">
+			>
+			["at7"] = <
+				text = <"Intravenous">
+				description = <"*">
+			>
+			["at8"] = <
+				text = <"Mixture">
+				description = <"*">
+			>
+			["id9"] = <
+				text = <"Tags">
+				description = <"*">
+			>
+			["id10"] = <
+				text = <"Attachment">
+				description = <"*">
+			>
+			["id11"] = <
+				text = <"Document status">
+				description = <"*">
+			>
+			["at12"] = <
+				text = <"Authorised">
+				description = <"*">
+			>
+			["at13"] = <
+				text = <"Confirmed">
+				description = <"*">
+			>
+			["at14"] = <
+				text = <"Open">
+				description = <"*">
+			>
+			["ac1"] = <
+				text = <"Medication order type (synthesised)">
+				description = <"* (synthesised)">
+			>
+			["ac2"] = <
+				text = <"Document status (synthesised)">
+				description = <"* (synthesised)">
+			>
+		>
+		["sl"] = <
+			["id1"] = <
+				text = <"Podrobnosti">
+				description = <"Dodatni podatki o kontekstu">
+			>
+			["id2"] = <
+				text = <"ID časa zdravljenja">
+				description = <"ID časa zdravljenja, ki mu pripada ta composition. This equates to the CONTSYS concept and repesents an admisitrative or contractual spell of care, involving a specific instiution or care provider.(en)">
+			>
+			["id3"] = <
+				text = <"ID časa zdravljenja na oddelku">
+				description = <"ID časa zdravljenja na oddelku, ki mu pripada ta composition.">
+			>
+			["id4"] = <
+				text = <"Portlet ID">
+				description = <"ID portleta v katerem so shranjene informacije o shranjenom composition-u. ">
+			>
+			["id5"] = <
+				text = <"Naročena aplikacija terapije">
+				description = <"Naročena aplikacija terapije">
+			>
+			["at6"] = <
+				text = <"Oralno">
+				description = <"Oralno">
+			>
+			["at7"] = <
+				text = <"Intravenozno">
+				description = <"Intravenozno">
+			>
+			["at8"] = <
+				text = <"Oboje">
+				description = <"Oboje">
+			>
+			["id9"] = <
+				text = <"*Tags(en)">
+				description = <"**(en)">
+			>
+			["id10"] = <
+				text = <"*Attachment(en)">
+				description = <"**(en)">
+			>
+			["id11"] = <
+				text = <"Status dokumenta">
+				description = <"*">
+			>
+			["at12"] = <
+				text = <"Avtoriziran">
+				description = <"*">
+			>
+			["at13"] = <
+				text = <"Potrjen">
+				description = <"*">
+			>
+			["at14"] = <
+				text = <"V delu">
+				description = <"*">
+			>
+			["ac1"] = <
+				text = <"Naročena aplikacija terapije (synthesised)">
+				description = <"Naročena aplikacija terapije (synthesised)">
+			>
+			["ac2"] = <
+				text = <"Status dokumenta (synthesised)">
+				description = <"* (synthesised)">
+			>
+		>
+	>
+	value_sets = <
+		["ac2"] = <
+			id = <"ac2">
+			members = <"at12", "at13", "at14">
+		>
+		["ac1"] = <
+			id = <"ac1">
+			members = <"at6", "at7", "at8">
+		>
+	>
