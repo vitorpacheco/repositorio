@@ -219,8 +219,8 @@
   }, {
     "id" : "openEHR-EHR-OBSERVATION.patient.v1.0.0",
     "rmType" : "OBSERVATION",
-    "name" : "Laboratory test result",
-    "path" : "archetypes/openEHR-EHR-OBSERVATION.patient.v1.0.0.adls",
+    "name" : "Patient",
+    "path" : "archetypes/openEHR-EHR-OBSERVATION.patient.v1.adls",
     "sha" : "b36a7d74d16e9c88adb9b906f17952007cf611e4",
     "languages" : [ "en" ]
   }, {
