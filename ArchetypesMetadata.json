@@ -217,13 +217,6 @@
     "sha" : "b77eda6acb9aa06653a46e78cdc774a832068272",
     "languages" : [ "en" ]
   }, {
-    "id" : "openEHR-EHR-OBSERVATION.patient.v1.0.0",
-    "rmType" : "OBSERVATION",
-    "name" : "Patient",
-    "path" : "archetypes/openEHR-EHR-OBSERVATION.patient.v1.adls",
-    "sha" : "d60751e54a69eb10ca286207eee9ab0a7e8fbe26",
-    "languages" : [ "en" ]
-  }, {
     "id" : "openEHR-EHR-OBSERVATION.respiration.v1.0.0",
     "rmType" : "OBSERVATION",
     "name" : "Respirations",
