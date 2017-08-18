@@ -221,7 +221,7 @@
     "rmType" : "OBSERVATION",
     "name" : "Patient",
     "path" : "archetypes/openEHR-EHR-OBSERVATION.patient.v1.adls",
-    "sha" : "5414e2b72009c490e0f41a3bfc9f23d64ab76581",
+    "sha" : "d60751e54a69eb10ca286207eee9ab0a7e8fbe26",
     "languages" : [ "en" ]
   }, {
     "id" : "openEHR-EHR-OBSERVATION.respiration.v1.0.0",
