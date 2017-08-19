@@ -230,5 +230,12 @@
     "path" : "archetypes/openEHR-EHR-SECTION.medication.v1.adls",
     "sha" : "d379bcf36aa1293b122d305a3daa87b3647ada0f",
     "languages" : [ "en" ]
+  }, {
+    "id" : "openEHR-EHR-OBSERVATION.patient.v1.0.0",
+    "rmType" : "OBSERVATION",
+    "name" : "patient",
+    "path" : "archetypes/openEHR-EHR-OBSERVATION.patient.v1.adls",
+    "sha" : "24326f6771467f8d9bc6147163e284bffae07d19",
+    "languages" : [ "en" ]
   } ]
 }
