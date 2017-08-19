@@ -15,13 +15,60 @@ description
     lifecycle_state = <"unmanaged">
 
 definition
-    OBSERVATION[id1] matches {    -- patient
+    OBSERVATION[id1] matches {    -- Patient
         data matches {
             HISTORY[id2] matches {
                 events matches {
                     EVENT[id3] matches {    -- Any event
                         data matches {
-                            ITEM_TREE[id4] 
+                            ITEM_TREE[id4] matches {
+                                items matches {
+                                    CLUSTER[id6] matches {    -- Address
+                                        items matches {
+                                            ELEMENT[id7] matches {    -- District
+                                                value matches {
+                                                    DV_TEXT[id8] 
+                                                }
+                                            }
+                                            ELEMENT[id9] matches {    -- Census area
+                                                value matches {
+                                                    DV_TEXT[id10] 
+                                                }
+                                            }
+                                            ELEMENT[id11] matches {    -- Delivery point identifier
+                                                value matches {
+                                                    DV_TEXT[id12] 
+                                                }
+                                            }
+                                            ELEMENT[id13] matches {    -- Postal code (ZIP code)
+                                                value matches {
+                                                    DV_TEXT[id14] 
+                                                }
+                                            }
+                                            ELEMENT[id15] matches {    -- Suburb/town/locality
+                                                value matches {
+                                                    DV_TEXT[id16] 
+                                                }
+                                            }
+                                            ELEMENT[id17] matches {    -- State/territory/province identifier
+                                                value matches {
+                                                    DV_TEXT[id18] 
+                                                }
+                                            }
+                                            ELEMENT[id19] matches {    -- Country identifier
+                                                value matches {
+                                                    DV_TEXT[id20] 
+                                                }
+                                            }
+                                            ELEMENT[id21] matches {    -- Address type start date accuracy indicator
+                                                value matches {
+                                                    DV_TEXT[id22] 
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         }
                         state matches {
                             ITEM_TREE[id5] 
@@ -33,15 +80,69 @@ definition
     }
 
 terminology
+    term_bindings = <
+        ["valid codes for state/territory/province"] = <
+            ["ac1"] = <http://google.com>
+        
+        >
+        ["valid codes for countries"] = <
+            ["ac2"] = <http://google.com>
+        
+        >
+    >
     term_definitions = <
         ["en"] = <
             ["id1"] = <
-                text = <"patient">
-                description = <"patient">
+                text = <"Patient">
+                description = <"Patient">
             >
             ["id3"] = <
                 text = <"Any event">
                 description = <"Any event">
+            >
+            ["id6"] = <
+                text = <"Address">
+                description = <"Address based on ISO22220 standard">
+            >
+            ["id7"] = <
+                text = <"District">
+                description = <"District">
+            >
+            ["id9"] = <
+                text = <"Census area">
+                description = <"Census area">
+            >
+            ["id11"] = <
+                text = <"Delivery point identifier">
+                description = <"Delivery point identifier">
+            >
+            ["id13"] = <
+                text = <"Postal code (ZIP code)">
+                description = <"Postal code (ZIP code)">
+            >
+            ["id15"] = <
+                text = <"Suburb/town/locality">
+                description = <"Suburb/town/locality">
+            >
+            ["id17"] = <
+                text = <"State/territory/province identifier">
+                description = <"State/territory/province identifier">
+            >
+            ["ac1"] = <
+                text = <"State codes">
+                description = <"valid codes for state/territory/province">
+            >
+            ["id19"] = <
+                text = <"Country identifier">
+                description = <"Country identifier">
+            >
+            ["ac2"] = <
+                text = <"Country codes">
+                description = <"valid codes for countries">
+            >
+            ["id21"] = <
+                text = <"Address type start date accuracy indicator">
+                description = <"Address type start date accuracy indicator">
             >
         >
     >
