@@ -52,12 +52,16 @@ definition
                                             }
                                             ELEMENT[id17] matches {    -- State/territory/province identifier
                                                 value matches {
-                                                    DV_TEXT[id18] 
+                                                    DV_CODED_TEXT[id18] matches {
+                                                        defining_code matches {[ac1]}		-- valid codes for state/territory/province
+                                                    }
                                                 }
                                             }
                                             ELEMENT[id19] matches {    -- Country identifier
                                                 value matches {
-                                                    DV_TEXT[id20] 
+                                                    DV_CODED_TEXT[id20] matches {
+                                                        defining_code matches {[ac2]}		-- valid codes for countries
+                                                    }
                                                 }
                                             }
                                             ELEMENT[id21] matches {    -- Address type start date accuracy indicator
